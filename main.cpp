@@ -1,14 +1,14 @@
 #include<cstdio>
 
 int main() {
+//需要一个把英寸单位转换为厘米单位（1 英寸=2.54 厘米）的程序。该程序要提示用户输入英寸值
+    double inch;
 
-    int dogs;
+    printf("单位换算：英寸转厘米，请输入英寸值\n");
 
-    printf("How　many　dogs　do　you　have?\n");
+    scanf("%lf", &inch);
 
-    scanf("%d", &dogs);
-
-    printf("So　you　have　%d　dog(s)!\n", dogs);
+    printf("%f 英寸等于 %lf 厘米!\n",inch, inch * 2.54);
 
     return 0;
 
