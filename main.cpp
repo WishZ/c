@@ -1,9 +1,9 @@
 #include<cstdio>
+#include <iostream>
+// using namespace std;
 
 int main() {
-    int ch ;
-    while ((ch = getchar()) != EOF)
-        putchar(ch);
-
+    std::cout << "嘻嘻嘻" << std::endl;
+    std::cout << "hahaha" << std::endl;
     return 0;
 }
