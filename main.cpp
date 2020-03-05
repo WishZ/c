@@ -22,30 +22,30 @@ double const PI = 3.14156;
 double area() {
     short iType;
     double radius, a, b, area = 0;
-    cout << "è¯·è¾“å…¥è¦è®¡ç®—é¢ç§¯çš„ç±»åž‹ï¼Ÿ(1ï¼šåœ†å½¢,2ï¼šé•¿æ–¹å½¢,3ï¼šæ­£æ–¹å½¢)";
+    cout << "ÇëÊäÈëÒª¼ÆËãÃæ»ýµÄÀàÐÍ£¿(1£ºÔ²ÐÎ,2£º³¤·½ÐÎ,3£ºÕý·½ÐÎ)";
     cin >> iType;
     switch (iType) {
         case 1:
-            cout << "è¯·è¾“å…¥åŠå¾„ï¼š\n";
+            cout << "ÇëÊäÈë°ë¾¶£º\n";
             cin >> radius;
             area = PI * radius * radius;
             break;
         case 2:
-            cout << "è¯·è¾“å…¥é•¿ï¼š\n";
+            cout << "ÇëÊäÈë³¤£º\n";
             cin >> a;
-            cout << "è¯·è¾“å…¥å®½ï¼š\n";
+            cout << "ÇëÊäÈë¿í£º\n";
             cin >> b;
             area = a * b;
             break;
         case 3:
-            cout << "è¯·è¾“å…¥è¾¹é•¿ï¼š\n";
+            cout << "ÇëÊäÈë±ß³¤£º\n";
             cin >> a;
             area = a * a;
             break;
         default:
-            cout << "è¾“å…¥çš„ç±»åž‹ä¸åˆæ³•\n";
+            cout << "ÊäÈëµÄÀàÐÍ²»ºÏ·¨\n";
     }
-    cout << "é¢ç§¯çš„å€¼ä¸ºï¼š" << area << endl;
+    cout << "Ãæ»ýµÄÖµÎª£º" << area << endl;
     return area;
 }
 
@@ -64,28 +64,28 @@ struct theTimeStruct {
 string timeStr() {
     string str;
     theTimeStruct timeStruct{2020, 3, 4, 21, 45, 11};
-    cout << "è¯·è¾“å…¥å¹´ä»½ï¼š\n";
+    cout << "ÇëÊäÈëÄê·Ý£º\n";
     cin >> timeStruct.year;
 
-    cout << "è¯·è¾“å…¥æœˆä»½ï¼š\n";
+    cout << "ÇëÊäÈëÔÂ·Ý£º\n";
     cin >> timeStruct.mon;
     if (MonthEnum(timeStruct.mon) > December || MonthEnum(timeStruct.mon) < January) {
-        cout << "æ‚¨è¾“å…¥çš„æœˆä»½ä¸åˆæ³•ï¼Œè¯·é‡æ–°è¾“å…¥ï¼š";
+        cout << "ÄúÊäÈëµÄÔÂ·Ý²»ºÏ·¨£¬ÇëÖØÐÂÊäÈë£º";
         cin >> timeStruct.mon;
     }
-    cout << "è¯·è¾“å…¥æ—¥æœŸï¼š\n";
+    cout << "ÇëÊäÈëÈÕÆÚ£º\n";
     cin >> timeStruct.day;
 
-    cout << "è¯·è¾“å…¥å°æ—¶ï¼š\n";
+    cout << "ÇëÊäÈëÐ¡Ê±£º\n";
     cin >> timeStruct.hour;
 
-    cout << "è¯·è¾“å…¥åˆ†é’Ÿï¼š\n";
+    cout << "ÇëÊäÈë·ÖÖÓ£º\n";
     cin >> timeStruct.min;
 
-    cout << "è¯·è¾“å…¥ç§’æ•°ï¼š\n";
+    cout << "ÇëÊäÈëÃëÊý£º\n";
     cin >> timeStruct.sec;
 
-    cout << "æ‚¨è¾“å…¥çš„æ—¶é—´æ˜¯ï¼š"
+    cout << "ÄúÊäÈëµÄÊ±¼äÊÇ£º"
          << timeStruct.year << "-"
          << timeStruct.mon << "-"
          << timeStruct.day << " "
@@ -99,13 +99,13 @@ void testEEr() {
     cout << "ss";
     timeStr();
 }
-//è¾“å…¥ä¸€ä¸ª8ä½äºŒè¿›åˆ¶ è½¬åŒ–ä¸ºåè¿›åˆ¶è¾“å‡º
+//ÊäÈëÒ»¸ö8Î»¶þ½øÖÆ ×ª»¯ÎªÊ®½øÖÆÊä³ö
 
 double binaryToDecimal();//
 
 double binaryToDecimal() {
     int value = 0;
-    cout << "è¯·è¾“å…¥8ä½äºŒè¿›åˆ¶ç¼–ç ï¼š\n";
+    cout << "ÇëÊäÈë8Î»¶þ½øÖÆ±àÂë£º\n";
 
     for (int i = 7; i >= 0; i--) {
         char ch;
@@ -114,7 +114,7 @@ double binaryToDecimal() {
             value += static_cast<int>(power(2, i));
         }
     }
-    cout << "è½¬åŒ–çš„ç»“æžœæ˜¯ï¼š" << value;
+    cout << "×ª»¯µÄ½á¹ûÊÇ£º" << value;
     return value;
 }
 
@@ -148,7 +148,7 @@ int main() {
     using vv = double;
 
     int k, g = 0, h = 0;
-    cout << "è¯·è¾“å…¥ä¸€äº›æ­£æ•´æ•°ï¼Œè¾“å…¥0é€€å‡ºï¼š\n";
+    cout << "ÇëÊäÈëÒ»Ð©ÕýÕûÊý£¬ÊäÈë0ÍË³ö£º\n";
     cin >> k;
 
     while (k != 0) {
@@ -157,12 +157,12 @@ int main() {
         cin >> k;
     }
 
-    cout << "å¤§äºŽ0çš„æ¬¡æ•°ï¼š" << g << endl;
-    cout << "å°äºŽ0çš„æ¬¡æ•°ï¼š" << h << endl;
+    cout << "´óÓÚ0µÄ´ÎÊý£º" << g << endl;
+    cout << "Ð¡ÓÚ0µÄ´ÎÊý£º" << h << endl;
 
 
     int n;
-    cout << "è¯·è¾“å…¥ä¸€ä¸ªæ­£æ•´æ•°ï¼š";
+    cout << "ÇëÊäÈëÒ»¸öÕýÕûÊý£º";
     cin >> n;
     cout << "Number   " << n << "   Factors   ";
 
@@ -183,7 +183,7 @@ int main() {
 
 
     int j;
-    cout << "è¯·è¾“å…¥ä¸€ä¸ªæ•´æ•°ï¼š";
+    cout << "ÇëÊäÈëÒ»¸öÕûÊý£º";
     cin >> j;
     do {
         int right_num = 0;
@@ -202,34 +202,34 @@ int main() {
 
 
     int year;
-    cout << "è¯·è¾“å…¥å¹´å·ï¼š\n";
+    cout << "ÇëÊäÈëÄêºÅ£º\n";
     cin >> year;
     bool isLeapYeay;
     isLeapYeay = (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0);
     if (isLeapYeay) {
-        cout << "æ˜¯é—°å¹´\n";
+        cout << "ÊÇÈòÄê\n";
     } else {
-        cout << "ä¸æ˜¯é—°å¹´\n";
+        cout << "²»ÊÇÈòÄê\n";
     }
 
 
     int day;
-    cout << "è¯·è¾“å…¥day\n";
+    cout << "ÇëÊäÈëday\n";
     cin >> day;
     switch (day) {
         case 0 :
-            cout << "å‘¨æ—¥\n";
+            cout << "ÖÜÈÕ\n";
             break;
         case 1:
-            cout << "å‘¨ä¸€" << endl;
+            cout << "ÖÜÒ»" << endl;
             break;
         default:
-            cout << "è¿™æ˜¯é»˜è®¤å€¼å•¦\n";
+            cout << "ÕâÊÇÄ¬ÈÏÖµÀ²\n";
             break;
     }
 
     int q, w, e;
-    cout << "è¯·è¾“å…¥q,w,e" << endl;
+    cout << "ÇëÊäÈëq,w,e" << endl;
     cin >> q >> w >> e;
     cout << q << w << e;
     cout << setw(5) << setprecision(3) << 3.1415;
@@ -243,12 +243,12 @@ int main() {
         }
     }
     int x, y, z;
-    cout << "è¯·è¾“å…¥x:\n";
+    cout << "ÇëÊäÈëx:\n";
     cin >> x;
-    cout << "è¯·è¾“å…¥y:\n";
+    cout << "ÇëÊäÈëy:\n";
     cin >> y;
     z = x > y ? x - y : y - x;
-    cout << "ç»“æžœæ˜¯\t\t" << z << "\n";
+    cout << "½á¹ûÊÇ\t\t" << z << "\n";
 
 
     int a;
