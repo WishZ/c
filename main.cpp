@@ -1,5 +1,6 @@
 #include <iostream>
 #include<iomanip>
+#include <cmath>
 
 using namespace std;
 enum Weekday {
@@ -118,7 +119,156 @@ double binaryToDecimal() {
     return value;
 }
 
+double arctan(double x) {
+    double sqr = x * x;
+    double e = x;
+    double r = 0;
+    int i = 1;
+    while (e / i > 1e-15) {
+        double f = e / i;
+        r = (i % 4 == 1) ? r + f : r - f;
+        e = e * sqr;
+        i += 2;
+    }
+    return r;
+}
+
+void getPi() {
+    double a = 16.0 * arctan(1.0 / 5.0);
+    double b = 4.0 * arctan(1.0 / 239.0);
+    cout << "PI = " << a - b << endl;
+}
+
+bool symm(unsigned int n) {
+    unsigned i = n;
+    unsigned m = 0;
+    while (i > 0) {
+        m = m * 10 + i % 10;
+        i /= 10;
+    }
+    return m == n;
+}
+
+const double TINY_VALUE = 1e-10;
+
+double tsin(double x) {
+    double g = 0;
+    double t = x;
+    int n = 1;
+    do {
+        g += t;
+        n++;
+        t = -t * x * x / (2 * n - 1) / (2 * n - 2);
+    } while (fabs(t) >= TINY_VALUE);
+    return g;
+}
+
+void testTsin() {
+    double k, r, s;
+    cout << "r = ";
+    cin >> r;
+    cout << "s = ";
+    cin >> s;
+    if (r * r <= s * s) {
+        k = sqrt(tsin(r) * tsin(r) + tsin(s) * tsin(s));
+    } else {
+        k = tsin(r * s) / 2;
+    }
+    cout << k << endl;
+}
+
+
+void testSymm() {
+    for (unsigned m = 11; m < 1000; m++) {
+        if (symm(m) && symm(m * m) && symm(m * m * m)) {
+            cout << "m = " << m << endl;
+            cout << "m * m = " << m * m << endl;
+            cout << "m * m * m = " << m * m * m << endl;
+        }
+    }
+}
+
+unsigned fac(unsigned n) {
+    unsigned f;
+    if (n == 0) {
+        f = 1;
+    } else {
+        f = fac(n - 1) * n;
+    }
+    return f;
+}
+
+void testFac() {
+    unsigned int a;
+    cout << "请输入一个正整数：\n";
+    cin >> a;
+    cout << "阶乘值为：" << fac(a) << "\n";
+}
+void function2 (int n);
+void function1 (int n) {
+    cout<<"function1";
+    if(n<=0)
+        return;
+    function2 (n-2);
+}
+void function2 (int n){
+    cout<<"function2";
+    if(n<=0)
+        return;
+    function1 (n-1);
+}
+
+int fib (int n){
+    cout << "fib\n";
+    if (n==0)
+        return 1;
+    else if (n==1)
+        return 2;
+    else
+        return fib(n-1)+fib(n-2);
+}
+int f(int a,int b)
+{
+    if(a<b)
+
+        return f((b-a),a);
+
+    else if(a ==b)
+
+        return 2*a;
+
+    else
+
+        return f(f(a/2,b),f(b,b%2));
+}
+
+int comm(int n, int k) {
+    cout << "comm \n";
+    if (k > n)
+        return 0;
+    else if (n == k || k== 0)
+        return 1;
+    else
+        return comm(n-1,k)+comm(n-1,k-1);
+}
+
+void testComm() {
+    int n,k;
+    cout << "请输入两个数字n和k:";
+    cin >>n >> k;
+    cout << "C(n,k) = " << comm(n,k) << endl;
+}
+
 int main() {
+    testComm();
+    cout << f(3,5);
+    fib(2);
+    function1(5);
+    testFac();
+    testTsin();
+    testSymm();
+    getPi();
+
     binaryToDecimal();
 
     testEEr();
