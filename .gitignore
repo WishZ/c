@@ -1,2 +1,6 @@
 .idea
 cmake-build-debug
+/Debug
+/*.filters
+/*.user
+/*.vcxproj
