@@ -4,4 +4,4 @@ project(Console)
 
 set (CMAKE_BUILD_TYPE  "Debug")
 
-add_executable(console main.cpp Clock.cpp Clock.h)
+add_executable(console main.cpp)

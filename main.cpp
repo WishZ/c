@@ -1,85 +1,71 @@
 #include <iostream>
-#include "Clock.h"
-
-void Clock::setTime(int newH, int newM, int news) {
-
-}
-
-void Clock::showTime() {
-
-}
-
-Clock::Clock(int i, int i1, int i2) :
-        hour(i), minute(i1), second(i2) {
-
-}
-
-Clock::Clock() {
-
-}
-
-//Clock::Clock(const Clock &c) {
-//
-//}
+#include <cmath>
 
 using namespace std;
-class Name{
 
-    char name[20];
-
+class Point {//Point类定义
 public:
-
-    void strcpy(char name[20], const char string[1]) {
-
+    Point(int xx = 0, int yy = 0) {
+        x = xx;
+        y = yy;
     }
 
-    Name(){
+    Point(Point &p);
 
-        strcpy (name,""); cout<<'?';
-
+    int getX() {
+        return x;
     }
 
-    Name(char *fname){
-
-        strcpy (name, fname); cout<<'?';
-
+    int getY() {
+        return y;
     }
-
-};
-class MyClass{
 
 private:
-
-    int num;
-
-public:
-
-    MyClass(int d):num(d){}
-
-    MyClass(const MyClass& original):num (original.num){
-        cout << "s\n";
-    }
-
-    friend void print(MyClass C){cout<<C.num; }
-
+    int x, y;
 };
 
+Point::Point(Point &p) {//复制构造函数的事项
+    x = p.x;
+    y = p.y;
+    cout << "调用了Point的复制构造函数\n";
+}
+
+//类的组合
+class Line { //Line的类定义
+public:
+    Line(Point xp1, Point xp2);
+
+    Line(Line &l);
+
+    double getLen() {
+        return len;
+    }
+
+private:
+    Point p1, p2;//Point类的对象p1,p2
+    double len;
+};
+
+//组合类的构造函数
+Line::Line(Point xp1, Point xp2) : p1(xp1), p2(xp2) {
+    cout << "调用Line类的构造函数\n";
+    double x = static_cast<double>(p1.getX() - p2.getX());
+    double y = static_cast<double>(p1.getY() - p2.getY());
+    len = sqrt(x * x + y * y);
+}
+
+Line::Line(Line &l) : p1(l.p1), p2(l.p2) {//组合类的复制构造函数
+    cout << "调用了Line的复制构造函数\n";
+    len = l.len;
+}
 
 int main() {
-    MyClass c(5);
-
-    MyClass *p1;
-
-    p1=&c;
-
-    print(*p1);
-
-    print(c);
-
-    Name names[3] ={Name("111"),Name("222")};
-    Clock myClock(1, 2, 3);
-    myClock.setTime(1, 12, 3);
-    myClock.showTime();
-    cout << "Hello ";
+    Point myP1(1, 1), myP2(4, 5);
+    Line line(myP1, myP2);
+    Line line2(line);
+    cout << "line的长度是：";
+    cout << line.getLen() << endl;
+    cout << "line2的长度是：";
+    cout << line2.getLen() << endl;
     return 0;
 }
