@@ -5,16 +5,20 @@ using namespace std;
 
 class Point {//Point类定义
 public:
-    Point(int xx = 0, int yy = 0) {
-        x = xx;
-        y = yy;
+    Point(int xx = 0, int yy = 0):x(xx),y(yy) {
+        count++;
     }
 
     ~Point() {
         cout << "析构函数";
+        count--;
     }
 
-    Point(Point &p);
+    Point(Point &p) {
+        x = p.x;
+        y = p.y;
+        count++;
+    };
 
     int getX() {
         return x;
@@ -23,16 +27,14 @@ public:
     int getY() {
         return y;
     }
+    static void showCount() {
+        cout << " Object count = "<< count <<endl;
+    }
 
 private:
     int x, y;
+    static int count;
 };
-
-Point::Point(Point &p) {//复制构造函数的事项
-    x = p.x;
-    y = p.y;
-    cout << "调用了Point的复制构造函数\n";
-}
 
 //类的组合
 class Line { //Line的类定义
@@ -116,7 +118,21 @@ enum class Thing {
     Wrong, Right
 };
 
+void other() {
+    static int a=2;//静态变量 全局寿命 局部可见  声明后 不会再次初始化  只有第一次进入函数时初始化
+    int c = 2; //局部变量 动态生存期  每次进入函数都初始化
+}
+int Point::count = 0;
 int main() {
+    Point::showCount();
+    Point a(4,5);
+    cout << "Point A:"<<a.getX()<<", "<< a.getY();
+    Point::showCount();
+
+    Point b(a);
+    cout << "Point B:"<< b.getX()<<","<<b.getY();
+    Point::showCount();
+
     Side s = Side::Right;
     Thing t = Thing::Right;
     ExamInfo course1("英语", 'B');
